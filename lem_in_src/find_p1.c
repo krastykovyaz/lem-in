@@ -12,39 +12,26 @@
 
 #include "../includes/header.h"
 
-void	end_or_not(t_lemin *stut, int k, int *temp2, int i)
-{
-	int l;
-
-	l = 0;
-	if (k != stut->end && (temp2[l] = k) >= 0)
-	{
-		stut->visit[i][k] = 1;
-		l++;
-	}
-	else
-	{
-		stut->ext_count++;
-	}
-}
-
 int		*find_exit(t_lemin *stut, int *tmp, int i)
 {
 	int k;
 	int m;
 	int *temp2;
+	int l;
 
+	l = 0;
 	temp2 = put_minus(stut->i_room);
 	m = 0;
 	while (tmp[m] != -1 && stut->ext_count == i)
 	{
 		k = 0;
-		while (k < stut->i_room && stut->ext_count == i)
+		while (k < stut->i_room)
 		{
 			if (stut->path[tmp[m]][k] && !(stut->visit[i][k]))
 			{
 				stut->previous[i][k] = tmp[m];
-				end_or_not(stut, k, temp2, i);
+				(k != stut->end && (temp2[l++] = k) >= 0) ? \
+				stut->visit[i][k] = 1 : stut->ext_count++;
 			}
 			k++;
 		}
