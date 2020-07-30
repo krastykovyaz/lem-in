@@ -80,11 +80,23 @@ int		add_room(t_lemin *stut, char *line)
 	char		**str;
 	int			i;
 	t_list		*list;
+	int			z;
 
 	i = 0;
+	z = 0;
+	while (line[z])
+		z++;
+	if (*line == ' ' || line[z - 1] == ' ')
+		error(1, stut);
+	z = -1;
 	str = ft_strsplit(line, ' ');
 	error((str == NULL || str[0] == NULL || str[0][0] == 'L'), stut);
 	error((!str[1] || !str[2] || str[3] || str[0][0] == '#'), stut);
+	while (str[2][++z])
+		error(!(ft_isinteger(str[2][z])), stut);
+	z = -1;
+	while (str[1][++z])
+		error(!(ft_isinteger(str[1][z])), stut);
 	list = ft_lstnew(str[0], ft_strlen(str[0]) + 1);
 	ft_lstadd(&(stut->room_list), list);
 	check_input(stut, str);
