@@ -49,7 +49,7 @@ C_SRC = main.c \
 	free_way.c \
 	print_way.c
 
-C_FILES = $(addprefix $(LEMIN_DIR), $(C_SRC)
+C_FILES = $(addprefix $(LEMIN_DIR), $(C_SRC))
 C_OBJ = $(addprefix $(LEMIN_DIR), $(patsubst %.c, %.o, $(C_SRC)))
 D_FILES_LEM = $(addprefix $(LEMIN_DIR), $(patsubst %.c, %.d, $(C_SRC)))
 
@@ -114,6 +114,3 @@ fclean: clean
 include $(wildcard $(D_FILES))
 
 re: fclean all
-
-test: 
-	@echo $(LEMIN_OBJ)

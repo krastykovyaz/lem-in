@@ -66,19 +66,15 @@ char	**ft_strsplit(char *str, char c)
 	int		i;
 	int		index;
 	char	**dest;
-	int		j;
 
 	i = 0;
 	index = 0;
-	j = 0;
 	if (!str || !c)
-		return (NULL);
-	if (str[j] == 0)
 		return (NULL);
 	dest = (char**)malloc(sizeof(char*) * (count_words(str, c) + 1));
 	if (!dest)
 		return (NULL);
-	if (*str == c)
+	while (*str == c)
 		str++;
 	while (str[i] != '\0')
 	{

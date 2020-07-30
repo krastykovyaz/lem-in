@@ -64,15 +64,15 @@ void	check_input(t_lemin *stut, char **str)
 {
 	long int	a;
 	long int	b;
-	int			z;
+	// int			z;
 	t_list		*list;
 
-	z = -1;
-	while (str[2][++z])
-		error(!(ft_isinteger(str[2][z])), stut);
-	z = -1;
-	while (str[1][++z])
-		error(!(ft_isinteger(str[1][z])), stut);
+	// z = -1;
+	// while (str[2][++z])
+	// 	error(!(ft_isinteger(str[2][z])), stut);
+	// z = -1;
+	// while (str[1][++z])
+	// 	error(!(ft_isinteger(str[1][z])), stut);
 	list = ft_lstnew(str[0], ft_strlen(str[0]) + 1);
 	ft_lstadd(&(stut->room_list), list);
 	check_xy(stut, str);
@@ -93,7 +93,7 @@ int		add_room(t_lemin *stut, char *line)
 
 	i = 0;
 	z = 0;
-	while (line[z])
+	while (line[z] != '\0')
 		z++;
 	if (*line == ' ' || line[z - 1] == ' ')
 		error(1, stut);
