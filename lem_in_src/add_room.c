@@ -64,7 +64,17 @@ void	check_input(t_lemin *stut, char **str)
 {
 	long int	a;
 	long int	b;
+	int			z;
+	t_list		*list;
 
+	z = -1;
+	while (str[2][++z])
+		error(!(ft_isinteger(str[2][z])), stut);
+	z = -1;
+	while (str[1][++z])
+		error(!(ft_isinteger(str[1][z])), stut);
+	list = ft_lstnew(str[0], ft_strlen(str[0]) + 1);
+	ft_lstadd(&(stut->room_list), list);
 	check_xy(stut, str);
 	a = ft_atoi(str[1]);
 	b = ft_atoi(str[2]);
@@ -79,7 +89,6 @@ int		add_room(t_lemin *stut, char *line)
 {
 	char		**str;
 	int			i;
-	t_list		*list;
 	int			z;
 
 	i = 0;
@@ -92,13 +101,6 @@ int		add_room(t_lemin *stut, char *line)
 	str = ft_strsplit(line, ' ');
 	error((str == NULL || str[0] == NULL || str[0][0] == 'L'), stut);
 	error((!str[1] || !str[2] || str[3] || str[0][0] == '#'), stut);
-	while (str[2][++z])
-		error(!(ft_isinteger(str[2][z])), stut);
-	z = -1;
-	while (str[1][++z])
-		error(!(ft_isinteger(str[1][z])), stut);
-	list = ft_lstnew(str[0], ft_strlen(str[0]) + 1);
-	ft_lstadd(&(stut->room_list), list);
 	check_input(stut, str);
 	while (str[i])
 	{
