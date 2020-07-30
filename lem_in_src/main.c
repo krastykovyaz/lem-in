@@ -58,5 +58,5 @@ int		main(void)
 	calc_ant(flat, ant);
 	set_way(flat, ant);
 	free_lemin(flat, 0);
-	return (1);
+	return (0);
 }

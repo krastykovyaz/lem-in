@@ -16,22 +16,28 @@ void	check_xy(t_lemin *stut, char **str)
 {
 	int	i;
 	int	j;
+	int k;
 
-	i = 0;
-	j = 0;
-	while (str[1][i] && str[2][i])
+	k = 0;
+	while (k < 2)
 	{
-		if (ft_isinteger(str[1][i]) && ft_isinteger(str[2][i]))
-			i++;
-		else
+		i = 0;
+		j = 0;
+		while (str[k][i])
 		{
-			while (str[j])
+			if (ft_isinteger(str[1][i]))
+				i++;
+			else
 			{
-				free(str[j]);
-				j++;
+				while (str[j])
+				{
+					free(str[j]);
+					j++;
+				}
+				free(str);
+				error(1, stut);
 			}
-			free(str);
-			error(1, stut);
+			k++;
 		}
 	}
 }
@@ -64,15 +70,8 @@ void	check_input(t_lemin *stut, char **str)
 {
 	long int	a;
 	long int	b;
-	// int			z;
 	t_list		*list;
 
-	// z = -1;
-	// while (str[2][++z])
-	// 	error(!(ft_isinteger(str[2][z])), stut);
-	// z = -1;
-	// while (str[1][++z])
-	// 	error(!(ft_isinteger(str[1][z])), stut);
 	list = ft_lstnew(str[0], ft_strlen(str[0]) + 1);
 	ft_lstadd(&(stut->room_list), list);
 	check_xy(stut, str);
@@ -97,7 +96,6 @@ int		add_room(t_lemin *stut, char *line)
 		z++;
 	if (*line == ' ' || line[z - 1] == ' ')
 		error(1, stut);
-	z = -1;
 	str = ft_strsplit(line, ' ');
 	error((str == NULL || str[0] == NULL || str[0][0] == 'L'), stut);
 	error((!str[1] || !str[2] || str[3] || str[0][0] == '#'), stut);
