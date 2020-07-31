@@ -15,24 +15,22 @@
 void	check_xy(t_lemin *stut, char **str)
 {
 	int	i;
-	int	j;
 	int k;
 
 	k = 0;
 	while (k < 2)
 	{
 		i = 0;
-		j = 0;
 		while (str[k][i])
 		{
 			if (ft_isinteger(str[1][i]))
 				i++;
 			else
 			{
-				while (str[j])
+				while (str[k])
 				{
-					free(str[j]);
-					j++;
+					free(str[k]);
+					k++;
 				}
 				free(str);
 				error(1, stut);

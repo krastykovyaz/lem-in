@@ -73,14 +73,14 @@ void	set_way(t_lemin *stut, int ant)
 
 	if (!(numb_ant = (int **)malloc(sizeof(int *) * (stut->ext_count))))
 		exit(0);
-	if (!(nant_path = (int *)malloc(sizeof(int ) * (stut->ext_count))))
+	if (!(nant_path = (int *)malloc(sizeof(int) * (stut->ext_count))))
 		exit(0);
 	i = 0;
 	while (i < stut->ext_count)
 	{
 		if (stut->ant_way[i])
 			nant_path[i] = 1;
-		if (!(numb_ant[i] = (int *)malloc(sizeof(int ) * stut->check_dist[i])))
+		if (!(numb_ant[i] = (int *)malloc(sizeof(int) * stut->check_dist[i])))
 			exit(0);
 		j = -1;
 		while (++j < stut->check_dist[i])
