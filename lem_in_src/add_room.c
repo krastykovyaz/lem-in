@@ -17,8 +17,8 @@ void	check_xy(t_lemin *stut, char **str)
 	int	i;
 	int k;
 
-	k = 0;
-	while (k < 2)
+	k = 1;
+	while (k < 3)
 	{
 		i = 0;
 		while (str[k][i])
@@ -35,8 +35,8 @@ void	check_xy(t_lemin *stut, char **str)
 				free(str);
 				error(1, stut);
 			}
-			k++;
 		}
+		k++;
 	}
 }
 
